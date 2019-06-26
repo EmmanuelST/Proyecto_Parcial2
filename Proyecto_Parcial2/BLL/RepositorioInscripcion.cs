@@ -54,10 +54,16 @@ namespace Proyecto_Parcial2.BLL
 
             bool paso = false;
             Contexto db = new Contexto();
+            RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
 
             try
             {
                 var eliminar = db.Inscripcion.Find(id);
+                var estudiante = dbE.Buscar(eliminar.EstudianteId);
+
+                estudiante.Balance -= eliminar.Monto;
+                dbE.Modificar(estudiante);
+
                 db.Entry(eliminar).State = EntityState.Deleted;
                 paso = db.SaveChanges() > 0;
 
