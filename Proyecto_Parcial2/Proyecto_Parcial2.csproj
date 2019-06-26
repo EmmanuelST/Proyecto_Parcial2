@@ -56,6 +56,7 @@
     <Compile Include="Entidades\Asignaturas.cs" />
     <Compile Include="Entidades\Estudiantes.cs" />
     <Compile Include="Entidades\Inscripcion.cs" />
+    <Compile Include="Entidades\InscripcionDetalles.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
