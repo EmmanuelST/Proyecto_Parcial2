@@ -39,13 +39,13 @@ namespace Proyecto_Parcial2Tests.BLL
                 InscripcionId = 0,
                 EstudianteId = 1,
                 Fecha = DateTime.Now,
-                Monto = 100,
+                Monto = 200,
                 Asiganturas = lista
             };
 
             var temp = estudiante.Buscar(inscripcion.EstudianteId);
             temp.Balance += inscripcion.Monto;
-            estudiante.Modificar(temp);
+            //estudiante.Modificar(temp) ;
 
             Assert.IsTrue(db.Guardar(inscripcion));
 
@@ -76,6 +76,14 @@ namespace Proyecto_Parcial2Tests.BLL
             };
 
             Assert.IsTrue(db.Modificar(inscripcion));
+
+        }
+        [TestMethod()]
+        public void Eliminar()
+        {
+            RepositorioInscripcion db = new RepositorioInscripcion();
+
+            Assert.IsTrue(db.Elimimar(1));
 
         }
     }

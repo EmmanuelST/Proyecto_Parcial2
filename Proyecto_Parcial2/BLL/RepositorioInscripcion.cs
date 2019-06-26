@@ -11,11 +11,41 @@ namespace Proyecto_Parcial2.BLL
 {
     public class RepositorioInscripcion : RepositorioBase<Inscripcion>
     {
+        public override bool Guardar(Inscripcion entity)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
+
+            try
+            {
+                RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
+
+                if(db.Inscripcion.Add(entity) != null)
+                {
+                    var estudiante = dbE.Buscar(entity.EstudianteId);
+                    estudiante.Balance += entity.Monto;
+
+                    paso = db.SaveChanges() > 0;
+                    dbE.Modificar(estudiante);
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
+            return paso;
+        }
 
         public override bool Modificar(Inscripcion entity)
         {
             bool paso = false;
             Contexto db = new Contexto();
+            RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
+            decimal acumulador;
+            acumulador = 0;
 
             try
             {
@@ -24,16 +54,26 @@ namespace Proyecto_Parcial2.BLL
                 foreach(var item in anterior.Asiganturas)
                 {
                     if (!entity.Asiganturas.Any(A => A.InscripcionDetallesId == item.InscripcionDetallesId))
+                    {
                         db.Entry(item).State = EntityState.Deleted;
+                      
+                    }
+                        
                 }
 
                 foreach(var item in entity.Asiganturas)
                 {
                     if (item.InscripcionDetallesId == 0)
+                    {
                         db.Entry(item).State = EntityState.Added;
+                    }
+                        
                     else
                         db.Entry(item).State = EntityState.Modified;
                 }
+
+                var estudiante = dbE.Buscar(entity.EstudianteId);
+
 
                 db.Entry(entity).State = EntityState.Modified;
 
@@ -62,7 +102,7 @@ namespace Proyecto_Parcial2.BLL
                 var estudiante = dbE.Buscar(eliminar.EstudianteId);
 
                 estudiante.Balance -= eliminar.Monto;
-                dbE.Modificar(estudiante);
+                //dbE.Modificar(estudiante);
 
                 db.Entry(eliminar).State = EntityState.Deleted;
                 paso = db.SaveChanges() > 0;
