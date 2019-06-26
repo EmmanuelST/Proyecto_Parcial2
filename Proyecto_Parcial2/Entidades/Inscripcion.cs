@@ -11,12 +11,14 @@ namespace Proyecto_Parcial2.Entidades
     {
         [Key]
         public int InscripcionId { get; set; }
+        public int EstudianteId { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
 
         public Inscripcion()
         {
             InscripcionId = 0;
+            EstudianteId = 0;
             Fecha = DateTime.Now;
             Monto = 0;
         }
