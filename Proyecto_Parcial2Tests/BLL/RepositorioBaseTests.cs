@@ -37,7 +37,7 @@ namespace Proyecto_Parcial2.BLL.Tests
             {
                 EstudianteId = 0,
                 FechaIngreso = DateTime.Now,
-                Balance = 500,
+                Balance = 0,
                 Nombres = "Prueba1"
             };
 

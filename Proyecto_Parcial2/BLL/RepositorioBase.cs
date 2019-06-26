@@ -19,7 +19,7 @@ namespace Proyecto_Parcial2.BLL
             db = new Contexto();
         }
         
-        public bool Guardar(T entity)
+        public virtual bool Guardar(T entity)
         {
             bool paso = false;
 
@@ -36,7 +36,7 @@ namespace Proyecto_Parcial2.BLL
             return paso;
         }
 
-        public bool Modificar(T entity)
+        public virtual bool Modificar(T entity)
         {
             bool paso = false;
 
@@ -53,7 +53,7 @@ namespace Proyecto_Parcial2.BLL
 
             return paso;
         }
-        public T Buscar(int id)
+        public virtual T Buscar(int id)
         {
             T entity;
 
@@ -68,7 +68,7 @@ namespace Proyecto_Parcial2.BLL
 
             return entity;
         }
-        public List<T> GetList(Expression<Func<T, bool>> expression)
+        public virtual List<T> GetList(Expression<Func<T, bool>> expression)
         {
             List<T> lista = new List<T>();
 
@@ -84,7 +84,7 @@ namespace Proyecto_Parcial2.BLL
             return lista;
 
         }
-        public bool Elimimar(int id)
+        public virtual bool Elimimar(int id)
         {
             bool paso = false;
 
@@ -100,7 +100,7 @@ namespace Proyecto_Parcial2.BLL
 
             return paso;
         }
-        public void Dispose()
+        public virtual void Dispose()
         {
             db.Dispose();
         }
