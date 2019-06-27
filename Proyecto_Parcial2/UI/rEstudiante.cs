@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Parcial2.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +30,23 @@ namespace Proyecto_Parcial2.UI
             FechadateTimePicker.Value = DateTime.Now;
             BalancetextBox.Text = "0";
 
+        }
+
+        private void Guadarbutton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private Estudiantes LlenarClase()
+        {
+            Estudiantes estudiante = new Estudiantes();
+
+            estudiante.Nombres = NombretextBox.Text;
+            estudiante.EstudianteId = (int)IdnumericUpDown.Value;
+            estudiante.FechaIngreso = FechadateTimePicker.Value;
+            
+
+            return estudiante;
         }
     }
 }

@@ -67,6 +67,11 @@
             // IdnumericUpDown
             // 
             this.IdnumericUpDown.Location = new System.Drawing.Point(65, 52);
+            this.IdnumericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.IdnumericUpDown.Name = "IdnumericUpDown";
             this.IdnumericUpDown.Size = new System.Drawing.Size(137, 20);
             this.IdnumericUpDown.TabIndex = 2;
@@ -74,6 +79,7 @@
             // NombretextBox
             // 
             this.NombretextBox.Location = new System.Drawing.Point(65, 87);
+            this.NombretextBox.MaxLength = 80;
             this.NombretextBox.Name = "NombretextBox";
             this.NombretextBox.Size = new System.Drawing.Size(236, 20);
             this.NombretextBox.TabIndex = 3;
@@ -152,6 +158,7 @@
             this.Guadarbutton.Text = "Guardar";
             this.Guadarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Guadarbutton.UseVisualStyleBackColor = true;
+            this.Guadarbutton.Click += new System.EventHandler(this.Guadarbutton_Click);
             // 
             // Eliminarbutton
             // 
