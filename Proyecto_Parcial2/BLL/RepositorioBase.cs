@@ -92,6 +92,7 @@ namespace Proyecto_Parcial2.BLL
             {
                 T entity = this.Buscar(id);
                 db.Entry(entity).State = EntityState.Deleted;
+                paso = db.SaveChanges() > 0;
 
             }catch(Exception)
             {
