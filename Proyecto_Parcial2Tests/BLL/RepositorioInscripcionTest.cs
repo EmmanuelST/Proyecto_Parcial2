@@ -24,14 +24,16 @@ namespace Proyecto_Parcial2Tests.BLL
             {
                 AsignaturaId = 1,
                 InscripcionDetallesId = 0,
-                InscripcionId = 0
+                InscripcionId = 0,
+                SubTotal = 100
             });
 
             lista.Add(new InscripcionDetalles()
             {
-                AsignaturaId = 2,
+                AsignaturaId = 1,
                 InscripcionDetallesId = 0,
-                InscripcionId = 0
+                InscripcionId = 0,
+                SubTotal = 100
             });
 
             Inscripcion inscripcion = new Inscripcion()
@@ -39,9 +41,9 @@ namespace Proyecto_Parcial2Tests.BLL
                 InscripcionId = 0,
                 EstudianteId = 1,
                 Fecha = DateTime.Now,
-                Monto = 200,
                 Asiganturas = lista
             };
+            inscripcion.CalcularMonto();
 
             var temp = estudiante.Buscar(inscripcion.EstudianteId);
             temp.Balance += inscripcion.Monto;
@@ -63,7 +65,8 @@ namespace Proyecto_Parcial2Tests.BLL
             {
                 AsignaturaId = 2,
                 InscripcionDetallesId = 2,
-                InscripcionId = 1
+                InscripcionId = 1,
+                SubTotal = 100
             });
 
             Inscripcion inscripcion = new Inscripcion()
@@ -71,9 +74,9 @@ namespace Proyecto_Parcial2Tests.BLL
                 InscripcionId = 1,
                 EstudianteId = 1,
                 Fecha = DateTime.Now,
-                Monto = 0,
                 Asiganturas = lista
             };
+            inscripcion.CalcularMonto();
 
             Assert.IsTrue(db.Modificar(inscripcion));
 

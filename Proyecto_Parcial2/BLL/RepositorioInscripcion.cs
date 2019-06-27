@@ -23,6 +23,7 @@ namespace Proyecto_Parcial2.BLL
                 if(db.Inscripcion.Add(entity) != null)
                 {
                     var estudiante = dbE.Buscar(entity.EstudianteId);
+                    entity.CalcularMonto();
                     estudiante.Balance += entity.Monto;
 
                     paso = db.SaveChanges() > 0;
@@ -44,14 +45,17 @@ namespace Proyecto_Parcial2.BLL
             bool paso = false;
             Contexto db = new Contexto();
             RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
-            decimal acumulador;
-            acumulador = 0;
+           
 
             try
             {
+                var estudiante = dbE.Buscar(entity.EstudianteId);
+                
                 var anterior = new RepositorioBase<Inscripcion>().Buscar(entity.InscripcionId);
 
-                foreach(var item in anterior.Asiganturas)
+                estudiante.Balance -= anterior.Monto;
+
+                foreach (var item in anterior.Asiganturas)
                 {
                     if (!entity.Asiganturas.Any(A => A.InscripcionDetallesId == item.InscripcionDetallesId))
                     {
@@ -72,8 +76,10 @@ namespace Proyecto_Parcial2.BLL
                         db.Entry(item).State = EntityState.Modified;
                 }
 
-                var estudiante = dbE.Buscar(entity.EstudianteId);
 
+                entity.CalcularMonto();
+                estudiante.Balance += entity.Monto;
+                dbE.Modificar(estudiante);
 
                 db.Entry(entity).State = EntityState.Modified;
 
@@ -100,6 +106,7 @@ namespace Proyecto_Parcial2.BLL
             {
                 var eliminar = db.Inscripcion.Find(id);
                 var estudiante = dbE.Buscar(eliminar.EstudianteId);
+                eliminar.CalcularMonto();
 
                 estudiante.Balance -= eliminar.Monto;
                 //dbE.Modificar(estudiante);

@@ -24,5 +24,17 @@ namespace Proyecto_Parcial2.Entidades
             Monto = 0;
             Asiganturas = new List<InscripcionDetalles>();
         }
+
+        public void CalcularMonto()
+        {
+            decimal total = 0;
+
+            foreach(var item in Asiganturas)
+            {
+                total += item.SubTotal;
+            }
+
+            Monto = total;
+        }
     }
 }
