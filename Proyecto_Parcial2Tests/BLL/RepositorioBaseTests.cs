@@ -38,7 +38,7 @@ namespace Proyecto_Parcial2.BLL.Tests
                 EstudianteId = 0,
                 FechaIngreso = DateTime.Now,
                 Balance = 0,
-                Nombres = "Prueba1"
+                Nombre = "Prueba1"
             };
 
             RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
@@ -73,7 +73,7 @@ namespace Proyecto_Parcial2.BLL.Tests
                 EstudianteId = 1,
                 FechaIngreso = DateTime.Now,
                 Balance = 500,
-                Nombres = "Prueba2"
+                Nombre = "Prueba2"
             }; 
             
 

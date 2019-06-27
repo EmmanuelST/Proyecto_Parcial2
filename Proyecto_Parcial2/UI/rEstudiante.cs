@@ -87,7 +87,7 @@ namespace Proyecto_Parcial2.UI
         {
             Estudiantes estudiante = new Estudiantes();
 
-            estudiante.Nombres = NombretextBox.Text;
+            estudiante.Nombre = NombretextBox.Text;
             estudiante.EstudianteId = (int)IdnumericUpDown.Value;
             estudiante.FechaIngreso = FechadateTimePicker.Value;
             estudiante.Balance = Decimal.Parse(BalancetextBox.Text);
@@ -121,6 +121,43 @@ namespace Proyecto_Parcial2.UI
             {
                 MessageBox.Show("Hubo un error eliminando", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Buscarbutton_Click(object sender, EventArgs e)
+        {
+            RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            try
+            {
+               
+                if (IdnumericUpDown.Value > 0)
+                {
+                    Estudiantes estudiante = new Estudiantes();
+                    if((estudiante = db.Buscar((int)IdnumericUpDown.Value)) != null)
+                    {
+                        Limpiar();
+                        LlenarCampos(estudiante);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo encontrar", "Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hubo un error al buscar", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void LlenarCampos(Estudiantes estudiante)
+        {
+
+            IdnumericUpDown.Value = estudiante.EstudianteId;
+            NombretextBox.Text = estudiante.Nombre;
+            FechadateTimePicker.Value = estudiante.FechaIngreso;
+            BalancetextBox.Text = estudiante.Balance.ToString();
+
         }
     }
 }
