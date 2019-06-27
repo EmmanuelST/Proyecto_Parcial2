@@ -14,6 +14,7 @@ namespace Proyecto_Parcial2.UI
 {
     public partial class rEstudiante : Form
     {
+        //TODO: Valida perfectamente el formulario de Estudiante
         public rEstudiante()
         {
             InitializeComponent();
@@ -57,8 +58,10 @@ namespace Proyecto_Parcial2.UI
 
                 }
 
+                Limpiar();
+
             }catch(Exception)
-            {
+            { 
                 MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

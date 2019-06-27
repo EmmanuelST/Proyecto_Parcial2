@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Parcial2.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace Proyecto_Parcial2
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void RegistroDeEstudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rEstudiante registro = new rEstudiante();
+            registro.MdiParent = this;
+            registro.Show();
         }
     }
 }
