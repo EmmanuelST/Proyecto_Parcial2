@@ -19,36 +19,12 @@ namespace Proyecto_Parcial2.UI
         {
             InitializeComponent();
             Detalles = new List<InscripcionDetalles>();
-            CargarAsignaturas();
         }
 
-        private void CargarAsignaturas()
-        {
-            RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
-
-            try
-            {
-                AsiganaturascomboBox.DataSource = null;
-                AsiganaturascomboBox.DataSource = db.GetList(p => true);
-                AsiganaturascomboBox.ValueMember = "AsignaturaId";
-                AsiganaturascomboBox.DisplayMember = "Descripcion";
-
-
-            }catch(Exception)
-            {
-                MessageBox.Show("Hubo un error al cargar las Asignaturas","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-
-        }
-
-        
-
-        
-
+       
         private void BuscarInscripcionbutton_Click(object sender, EventArgs e)
         {
-            if (!Validar())
-                return;
+           
 
             errorProvider.Clear();
             RepositorioInscripcion db = new RepositorioInscripcion();
@@ -80,6 +56,7 @@ namespace Proyecto_Parcial2.UI
             }catch(Exception)
             {
                 throw;
+                //MessageBox.Show("Ocurrio un error!!","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             
@@ -89,11 +66,13 @@ namespace Proyecto_Parcial2.UI
         {
 
             IdInscripcionnumericUpDown.Value = 0;
-            CargarAsignaturas();
+            IdEstudiantenumericUpDown.Value = 0;
+            EstudianteNombretextBox.Text = string.Empty;
             FechadateTimePicker.Value = DateTime.Now;
+            IdAsignaturanumericUpDown.Value = 0;
+            DescripcionAsignaturatextBox.Text = string.Empty;
             Detalles = new List<InscripcionDetalles>();
             TotaltextBox.Text = "0";
-            
 
         }
 
@@ -142,16 +121,204 @@ namespace Proyecto_Parcial2.UI
         private void LlenarCampos(Inscripcion inscripcion)
         {
             IdInscripcionnumericUpDown.Value = inscripcion.InscripcionId;
-            LLenarEstudiante(inscripcion.EstudianteId);
+            IdEstudiantenumericUpDown.Value = inscripcion.EstudianteId;
+            FechadateTimePicker.Value = inscripcion.Fecha;
+            inscripcion.CalcularMonto();
+            TotaltextBox.Text = inscripcion.Monto.ToString();
+            Detalles = new List<InscripcionDetalles>();
             Detalles = inscripcion.Asiganturas;
             CargarGrip();
 
+        }
+
+        private void LlenarCamposEstudiante(Estudiantes estudiante)
+        {
+            IdEstudiantenumericUpDown.Value = estudiante.EstudianteId;
+            EstudianteNombretextBox.Text = estudiante.Nombre;
+        }
+
+        private Estudiantes BuscarEstudiante(int id)
+        {
+            RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            Estudiantes estudiante = new Estudiantes();
+            try
+            {
+                estudiante = db.Buscar(id);
+
+
+            }catch(Exception)
+            {
+                throw;
+            }
+
+            return estudiante;
+        }
+
+        private Asignaturas BuscarAsigantura(int id)
+        {
+            RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
+            Asignaturas asignatura;
+
+            try
+            {
+                asignatura = db.Buscar(id);
+
+            }catch(Exception)
+            {
+                throw;
+
+            }
+
+
+            return asignatura;
         }
 
         private void CargarGrip()
         {
             AsignaturasdataGridView.DataSource = null;
             AsignaturasdataGridView.DataSource = Detalles;
+        }
+
+        private void Nuevobutton_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        private void Guardarbutton_Click(object sender, EventArgs e)
+        {
+
+            if (!Validar())
+                return;
+
+            RepositorioInscripcion db = new RepositorioInscripcion();
+            Inscripcion inscripcion = LlenarInscripcion();
+
+
+            try
+            {
+
+                if (IdInscripcionnumericUpDown.Value == 0)
+                {
+                    if (db.Guardar(inscripcion))
+                    {
+                        Limpiar();
+                        MessageBox.Show("Guardado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo guardar", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    }
+                }
+                else
+                {
+                    if(db.Modificar(inscripcion))
+                    {
+                        Limpiar();
+                        MessageBox.Show("Modificado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo modificar", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                }
+
+
+            }catch(Exception)
+            {
+                throw;
+                //MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void Eliminarbutton_Click(object sender, EventArgs e)
+        {
+            RepositorioInscripcion db = new RepositorioInscripcion();
+
+            try
+            {
+
+                if(IdInscripcionnumericUpDown.Value > 0)
+                {
+                    db.Elimimar((int)IdInscripcionnumericUpDown.Value);
+                }
+                else
+                {
+                    errorProvider.SetError(IdInscripcionnumericUpDown,"Este campo no puede ser cero para eliminar");
+                }
+
+            }catch(Exception)
+            {
+                throw;
+                //MessageBox.Show("No se puede eliminar si no existe","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void BuscarEstudiantebutton_Click(object sender, EventArgs e)
+        {
+            RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            Estudiantes estudiante;
+
+            try
+            {
+               if(IdEstudiantenumericUpDown.Value > 0)
+               {
+                    if((estudiante = db.Buscar((int)IdEstudiantenumericUpDown.Value)) != null)
+                    {
+                        LlenarCamposEstudiante(estudiante);
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontro el estudiante","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+               }
+               else
+               {
+                    errorProvider.SetError(IdEstudiantenumericUpDown,"Este campo no puede ser cero");
+               }
+
+
+            }catch(Exception)
+            {
+                throw;
+                //MessageBox.Show("Ocurrio un error","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        
+
+        private void BuscarAsignaturabutton_Click(object sender, EventArgs e)
+        {
+            RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
+            Asignaturas asignatura;
+
+            try
+            {
+                if(IdAsignaturanumericUpDown.Value > 0)
+                {
+                    if((asignatura = db.Buscar((int)IdAsignaturanumericUpDown.Value))!= null)
+                    {
+                        DescripcionAsignaturatextBox.Text = asignatura.Descripcion;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO se pudo encontrar","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    errorProvider.SetError(IdAsignaturanumericUpDown,"Este campo no puede ser cero");
+                }
+            }catch(Exception)
+            {
+                throw;
+                //MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
         }
     }
 }

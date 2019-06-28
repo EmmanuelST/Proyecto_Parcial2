@@ -42,19 +42,24 @@
             this.label4 = new System.Windows.Forms.Label();
             this.FechadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.DescripcionAsignaturatextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.BuscarAsignaturabutton = new System.Windows.Forms.Button();
+            this.IdAsignaturanumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.AsignaturasdataGridView = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.TotaltextBox = new System.Windows.Forms.TextBox();
             this.Nuevobutton = new System.Windows.Forms.Button();
             this.Guardarbutton = new System.Windows.Forms.Button();
             this.Eliminarbutton = new System.Windows.Forms.Button();
-            this.AsiganaturascomboBox = new System.Windows.Forms.ComboBox();
+            this.EliminarFilabutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IdInscripcionnumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IdEstudiantenumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IdAsignaturanumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AsignaturasdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,10 +172,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.AsiganaturascomboBox);
+            this.groupBox1.Controls.Add(this.DescripcionAsignaturatextBox);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.BuscarAsignaturabutton);
+            this.groupBox1.Controls.Add(this.IdAsignaturanumericUpDown);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.AsignaturasdataGridView);
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(12, 170);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(370, 233);
@@ -178,23 +186,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Asignaturas";
             // 
+            // DescripcionAsignaturatextBox
+            // 
+            this.DescripcionAsignaturatextBox.Location = new System.Drawing.Point(182, 18);
+            this.DescripcionAsignaturatextBox.Name = "DescripcionAsignaturatextBox";
+            this.DescripcionAsignaturatextBox.ReadOnly = true;
+            this.DescripcionAsignaturatextBox.Size = new System.Drawing.Size(136, 20);
+            this.DescripcionAsignaturatextBox.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(113, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Descripcion:";
+            // 
+            // BuscarAsignaturabutton
+            // 
+            this.BuscarAsignaturabutton.Image = global::Proyecto_Parcial2.Properties.Resources.buscaTyni;
+            this.BuscarAsignaturabutton.Location = new System.Drawing.Point(77, 17);
+            this.BuscarAsignaturabutton.Name = "BuscarAsignaturabutton";
+            this.BuscarAsignaturabutton.Size = new System.Drawing.Size(30, 23);
+            this.BuscarAsignaturabutton.TabIndex = 8;
+            this.BuscarAsignaturabutton.UseVisualStyleBackColor = true;
+            this.BuscarAsignaturabutton.Click += new System.EventHandler(this.BuscarAsignaturabutton_Click);
+            // 
+            // IdAsignaturanumericUpDown
+            // 
+            this.IdAsignaturanumericUpDown.Location = new System.Drawing.Point(16, 18);
+            this.IdAsignaturanumericUpDown.Name = "IdAsignaturanumericUpDown";
+            this.IdAsignaturanumericUpDown.Size = new System.Drawing.Size(55, 20);
+            this.IdAsignaturanumericUpDown.TabIndex = 7;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 20);
+            this.label5.Location = new System.Drawing.Point(1, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Asignatura:";
-            // 
-            // button2
-            // 
-            this.button2.Image = global::Proyecto_Parcial2.Properties.Resources.add;
-            this.button2.Location = new System.Drawing.Point(297, 11);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(40, 36);
-            this.button2.TabIndex = 4;
-            this.button2.UseVisualStyleBackColor = true;
+            this.label5.Size = new System.Drawing.Size(19, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Id:";
             // 
             // AsignaturasdataGridView
             // 
@@ -203,6 +236,15 @@
             this.AsignaturasdataGridView.Name = "AsignaturasdataGridView";
             this.AsignaturasdataGridView.Size = new System.Drawing.Size(358, 174);
             this.AsignaturasdataGridView.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Image = global::Proyecto_Parcial2.Properties.Resources.add;
+            this.button2.Location = new System.Drawing.Point(324, 11);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(40, 36);
+            this.button2.TabIndex = 4;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -225,51 +267,59 @@
             // 
             this.Nuevobutton.Image = global::Proyecto_Parcial2.Properties.Resources.nuevo;
             this.Nuevobutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Nuevobutton.Location = new System.Drawing.Point(27, 431);
+            this.Nuevobutton.Location = new System.Drawing.Point(43, 453);
             this.Nuevobutton.Name = "Nuevobutton";
             this.Nuevobutton.Size = new System.Drawing.Size(75, 53);
             this.Nuevobutton.TabIndex = 20;
             this.Nuevobutton.Text = "Nuevo";
             this.Nuevobutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Nuevobutton.UseVisualStyleBackColor = true;
+            this.Nuevobutton.Click += new System.EventHandler(this.Nuevobutton_Click);
             // 
             // Guardarbutton
             // 
             this.Guardarbutton.Image = global::Proyecto_Parcial2.Properties.Resources.guardar;
             this.Guardarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Guardarbutton.Location = new System.Drawing.Point(134, 431);
+            this.Guardarbutton.Location = new System.Drawing.Point(150, 453);
             this.Guardarbutton.Name = "Guardarbutton";
             this.Guardarbutton.Size = new System.Drawing.Size(75, 53);
             this.Guardarbutton.TabIndex = 21;
             this.Guardarbutton.Text = "Guardar";
             this.Guardarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Guardarbutton.UseVisualStyleBackColor = true;
+            this.Guardarbutton.Click += new System.EventHandler(this.Guardarbutton_Click);
             // 
             // Eliminarbutton
             // 
             this.Eliminarbutton.Image = global::Proyecto_Parcial2.Properties.Resources.eliminar;
             this.Eliminarbutton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Eliminarbutton.Location = new System.Drawing.Point(239, 431);
+            this.Eliminarbutton.Location = new System.Drawing.Point(255, 453);
             this.Eliminarbutton.Name = "Eliminarbutton";
             this.Eliminarbutton.Size = new System.Drawing.Size(75, 53);
             this.Eliminarbutton.TabIndex = 22;
             this.Eliminarbutton.Text = "Eliminar";
             this.Eliminarbutton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.Eliminarbutton.UseVisualStyleBackColor = true;
+            this.Eliminarbutton.Click += new System.EventHandler(this.Eliminarbutton_Click);
             // 
-            // AsiganaturascomboBox
+            // EliminarFilabutton
             // 
-            this.AsiganaturascomboBox.FormattingEnabled = true;
-            this.AsiganaturascomboBox.Location = new System.Drawing.Point(73, 17);
-            this.AsiganaturascomboBox.Name = "AsiganaturascomboBox";
-            this.AsiganaturascomboBox.Size = new System.Drawing.Size(208, 21);
-            this.AsiganaturascomboBox.TabIndex = 6;
+            this.EliminarFilabutton.Image = global::Proyecto_Parcial2.Properties.Resources.remover;
+            this.EliminarFilabutton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EliminarFilabutton.Location = new System.Drawing.Point(18, 403);
+            this.EliminarFilabutton.Name = "EliminarFilabutton";
+            this.EliminarFilabutton.Size = new System.Drawing.Size(101, 32);
+            this.EliminarFilabutton.TabIndex = 23;
+            this.EliminarFilabutton.Text = "Eliminar Fila";
+            this.EliminarFilabutton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EliminarFilabutton.UseVisualStyleBackColor = true;
             // 
             // rInscripciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(394, 503);
+            this.ClientSize = new System.Drawing.Size(394, 535);
+            this.Controls.Add(this.EliminarFilabutton);
             this.Controls.Add(this.Eliminarbutton);
             this.Controls.Add(this.Guardarbutton);
             this.Controls.Add(this.Nuevobutton);
@@ -293,6 +343,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IdEstudiantenumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IdAsignaturanumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AsignaturasdataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -314,13 +365,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Eliminarbutton;
         private System.Windows.Forms.Button Guardarbutton;
         private System.Windows.Forms.Button Nuevobutton;
         private System.Windows.Forms.TextBox TotaltextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView AsignaturasdataGridView;
-        private System.Windows.Forms.ComboBox AsiganaturascomboBox;
+        private System.Windows.Forms.Button EliminarFilabutton;
+        private System.Windows.Forms.TextBox DescripcionAsignaturatextBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button BuscarAsignaturabutton;
+        private System.Windows.Forms.NumericUpDown IdAsignaturanumericUpDown;
+        private System.Windows.Forms.Label label5;
     }
 }
