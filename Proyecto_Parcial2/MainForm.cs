@@ -24,5 +24,12 @@ namespace Proyecto_Parcial2
             registro.MdiParent = this;
             registro.Show();
         }
+
+        private void RegistroDeAsignaturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rAsignatura registro = new rAsignatura();
+            registro.MdiParent = this;
+            registro.Show();
+        }
     }
 }

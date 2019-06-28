@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.registrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeEstudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroDeAsignaturasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,8 @@
             // registrosToolStripMenuItem
             // 
             this.registrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registroDeEstudiantesToolStripMenuItem});
+            this.registroDeEstudiantesToolStripMenuItem,
+            this.registroDeAsignaturasToolStripMenuItem});
             this.registrosToolStripMenuItem.Name = "registrosToolStripMenuItem";
             this.registrosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.registrosToolStripMenuItem.Text = "&Registros";
@@ -55,9 +57,16 @@
             // registroDeEstudiantesToolStripMenuItem
             // 
             this.registroDeEstudiantesToolStripMenuItem.Name = "registroDeEstudiantesToolStripMenuItem";
-            this.registroDeEstudiantesToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
-            this.registroDeEstudiantesToolStripMenuItem.Text = "Registro de Estudiantes";
+            this.registroDeEstudiantesToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.registroDeEstudiantesToolStripMenuItem.Text = "Registro de &Estudiantes";
             this.registroDeEstudiantesToolStripMenuItem.Click += new System.EventHandler(this.RegistroDeEstudiantesToolStripMenuItem_Click);
+            // 
+            // registroDeAsignaturasToolStripMenuItem
+            // 
+            this.registroDeAsignaturasToolStripMenuItem.Name = "registroDeAsignaturasToolStripMenuItem";
+            this.registroDeAsignaturasToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.registroDeAsignaturasToolStripMenuItem.Text = "Registro de &Asignaturas";
+            this.registroDeAsignaturasToolStripMenuItem.Click += new System.EventHandler(this.RegistroDeAsignaturasToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -83,6 +92,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem registrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroDeEstudiantesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroDeAsignaturasToolStripMenuItem;
     }
 }
 

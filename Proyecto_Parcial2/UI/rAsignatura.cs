@@ -74,8 +74,7 @@ namespace Proyecto_Parcial2.UI
             }
             catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             
@@ -160,8 +159,7 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -174,7 +172,7 @@ namespace Proyecto_Parcial2.UI
             try
             {
 
-                if(IdnumericUpDown.Value == 0)
+                if(IdnumericUpDown.Value > 0)
                 {
                     if((asignatura = db.Buscar((int)IdnumericUpDown.Value)) != null)
                     {
@@ -195,7 +193,6 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
                 MessageBox.Show("Hubo un error", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
