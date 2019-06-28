@@ -105,6 +105,22 @@ namespace Proyecto_Parcial2.BLL
         {
             db.Dispose();
         }
+
+        public virtual bool Repetido(Expression<Func<T, bool>> expression)
+        {
+            bool paso;
+            try
+            {
+                paso = db.Set<T>().Any(expression);
+
+
+            }catch(Exception)
+            {
+                throw;
+            }
+
+            return paso;
+        }
     }
 
     
