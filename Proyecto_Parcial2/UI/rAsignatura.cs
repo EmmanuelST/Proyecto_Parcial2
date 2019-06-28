@@ -30,6 +30,7 @@ namespace Proyecto_Parcial2.UI
             IdnumericUpDown.Value = 0;
             DescripciontextBox.Text = string.Empty;
             CreditosnumericUpDown.Value = 0;
+            errorProvider.Clear();
 
         }
 
@@ -45,9 +46,16 @@ namespace Proyecto_Parcial2.UI
 
             try
             {
+                
 
                 if (IdnumericUpDown.Value == 0)
                 {
+                    if (db.Repetido(A => A.Descripcion == DescripciontextBox.Text))
+                    {
+                        MessageBox.Show("Esta asignatura ya esta registrada", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     if (db.Guardar(asigantura))
                     {
                         Limpiar();
@@ -134,6 +142,7 @@ namespace Proyecto_Parcial2.UI
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
             RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
+            errorProvider.Clear();
             
             try
             {
@@ -168,6 +177,7 @@ namespace Proyecto_Parcial2.UI
         {
             RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
             Asignaturas asignatura;
+            errorProvider.Clear();
 
             try
             {

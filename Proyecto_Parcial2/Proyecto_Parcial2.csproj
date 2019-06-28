@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,6 +82,12 @@
     <Compile Include="UI\rEstudiante.Designer.cs">
       <DependentUpon>rEstudiante.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\rInscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\rInscripciones.Designer.cs">
+      <DependentUpon>rInscripciones.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\rEstudiante.resx">
       <DependentUpon>rEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\rInscripciones.resx">
+      <DependentUpon>rInscripciones.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -131,6 +141,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\remover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buscaTyni.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

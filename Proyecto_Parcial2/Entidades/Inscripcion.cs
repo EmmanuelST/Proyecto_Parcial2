@@ -14,7 +14,7 @@ namespace Proyecto_Parcial2.Entidades
         public int EstudianteId { get; set; }
         public DateTime Fecha { get; set; }
         public decimal Monto { get; set; }
-        public virtual List<InscripcionDetalles> Asiganturas {get;set ;}
+        public virtual List<InscripcionDetalles> Asiganturas {get;set;}
 
         public Inscripcion()
         {

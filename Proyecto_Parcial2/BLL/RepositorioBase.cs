@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Linq;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -112,7 +113,6 @@ namespace Proyecto_Parcial2.BLL
             try
             {
                 paso = db.Set<T>().Any(expression);
-
 
             }catch(Exception)
             {
