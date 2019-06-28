@@ -39,6 +39,7 @@ namespace Proyecto_Parcial2.UI
                     {
                         Limpiar();
                         LlenarCampos(inscripcion);
+                        LlenarCamposEstudiante(BuscarEstudiante(inscripcion.EstudianteId));
 
                     }
                     else
@@ -72,6 +73,7 @@ namespace Proyecto_Parcial2.UI
             IdAsignaturanumericUpDown.Value = 0;
             DescripcionAsignaturatextBox.Text = string.Empty;
             Detalles = new List<InscripcionDetalles>();
+            CargarGrip();
             TotaltextBox.Text = "0";
 
         }
@@ -196,7 +198,7 @@ namespace Proyecto_Parcial2.UI
 
             try
             {
-
+                inscripcion.CalcularMonto();
                 if (IdInscripcionnumericUpDown.Value == 0)
                 {
                     if (db.Guardar(inscripcion))
@@ -345,6 +347,7 @@ namespace Proyecto_Parcial2.UI
                             InscripcionDetallesId = 0,
                             SubTotal = (asignatura.Creditos * PrecioCreditosnumericUpDown.Value)
                         });
+                        CargarGrip();
                     }
                     else
                     {
@@ -367,8 +370,16 @@ namespace Proyecto_Parcial2.UI
 
         private void EliminarFilabutton_Click(object sender, EventArgs e)
         {
-            Detalles.RemoveAt(AsignaturasdataGridView.CurrentRow.Index);
-            CargarGrip();
+            try
+            {
+                Detalles.RemoveAt(AsignaturasdataGridView.CurrentRow.Index);
+                CargarGrip();
+            }
+            catch(Exception)
+            {
+                
+            }
+           
         }
     }
 }
