@@ -31,5 +31,12 @@ namespace Proyecto_Parcial2
             registro.MdiParent = this;
             registro.Show();
         }
+
+        private void InscripcionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rInscripciones registro = new rInscripciones();
+            registro.MdiParent = this;
+            registro.Show();
+        }
     }
 }

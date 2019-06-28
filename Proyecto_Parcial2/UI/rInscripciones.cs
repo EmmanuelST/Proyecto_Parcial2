@@ -320,5 +320,55 @@ namespace Proyecto_Parcial2.UI
             }
 
         }
+
+        private void Agregarbutton_Click(object sender, EventArgs e)
+        {
+            errorProvider.Clear();
+
+            try
+            {
+                if (IdAsignaturanumericUpDown.Value > 0)
+                {
+                    if (PrecioCreditosnumericUpDown.Value <= 0)
+                    {
+                        errorProvider.SetError(PrecioCreditosnumericUpDown, "Debe fijar el precio de los creditos");
+                        return;
+                    }
+
+                    Asignaturas asignatura;
+                    if ( (asignatura = BuscarAsigantura((int)IdAsignaturanumericUpDown.Value)) != null)
+                    {
+                        Detalles.Add(new InscripcionDetalles()
+                        {
+                            InscripcionId = (int)IdInscripcionnumericUpDown.Value,
+                            AsignaturaId = asignatura.AsignaturaId,
+                            InscripcionDetallesId = 0,
+                            SubTotal = (asignatura.Creditos * PrecioCreditosnumericUpDown.Value)
+                        });
+                    }
+                    else
+                    {
+                        MessageBox.Show("NO se pudo encontrar la asignatura", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+
+                }
+                else
+                {
+                    errorProvider.SetError(IdAsignaturanumericUpDown, "Este valor no puede ser cero");
+                }
+            }
+            catch(Exception)
+            {
+                throw;
+                //MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void EliminarFilabutton_Click(object sender, EventArgs e)
+        {
+            Detalles.RemoveAt(AsignaturasdataGridView.CurrentRow.Index);
+            CargarGrip();
+        }
     }
 }
