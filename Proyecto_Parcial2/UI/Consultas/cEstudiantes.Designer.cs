@@ -48,6 +48,7 @@
             this.ConsultadataGridView.Name = "ConsultadataGridView";
             this.ConsultadataGridView.Size = new System.Drawing.Size(822, 403);
             this.ConsultadataGridView.TabIndex = 17;
+           
             // 
             // Buscarbutton
             // 
@@ -68,6 +69,7 @@
             this.CriteriotextBox.Name = "CriteriotextBox";
             this.CriteriotextBox.Size = new System.Drawing.Size(193, 20);
             this.CriteriotextBox.TabIndex = 15;
+           
             // 
             // label2
             // 
@@ -77,6 +79,7 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Criterio:";
+           
             // 
             // label1
             // 
@@ -86,7 +89,7 @@
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Filtro:";
-            // 
+           
             // label3
             // 
             this.label3.AutoSize = true;
@@ -95,6 +98,7 @@
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 18;
             this.label3.Text = "Desde:";
+    
             // 
             // DesdedateTimePicker
             // 
@@ -104,6 +108,7 @@
             this.DesdedateTimePicker.Name = "DesdedateTimePicker";
             this.DesdedateTimePicker.Size = new System.Drawing.Size(97, 20);
             this.DesdedateTimePicker.TabIndex = 19;
+           
             // 
             // HastadateTimePicker
             // 
@@ -113,6 +118,7 @@
             this.HastadateTimePicker.Name = "HastadateTimePicker";
             this.HastadateTimePicker.Size = new System.Drawing.Size(97, 20);
             this.HastadateTimePicker.TabIndex = 21;
+           
             // 
             // label4
             // 
@@ -122,6 +128,7 @@
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 20;
             this.label4.Text = "Hasta:";
+           
             // 
             // FiltrocomboBox
             // 
@@ -134,6 +141,7 @@
             this.FiltrocomboBox.Name = "FiltrocomboBox";
             this.FiltrocomboBox.Size = new System.Drawing.Size(178, 21);
             this.FiltrocomboBox.TabIndex = 22;
+           
             // 
             // cEstudiantes
             // 

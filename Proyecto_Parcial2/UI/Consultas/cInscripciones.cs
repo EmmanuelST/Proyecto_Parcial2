@@ -12,12 +12,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Parcial2.UI.Consultas
 {
-    public partial class cEstudiantes : Form
+    public partial class cInscripciones : Form
     {
-        public cEstudiantes()
+        public cInscripciones()
         {
             InitializeComponent();
-            HastadateTimePicker.Value.AddDays(1);
             Buscar();
         }
 
@@ -28,33 +27,34 @@ namespace Proyecto_Parcial2.UI.Consultas
 
         private void Buscar()
         {
-            var listado = new List<Estudiantes>();
-            RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            var listado = new List<Inscripcion>();
+            RepositorioInscripcion db = new RepositorioInscripcion();
 
             if (CriteriotextBox.Text.Trim().Length > 0)
             {
 
                 try
                 {
-                 
+
                     switch (FiltrocomboBox.SelectedIndex)
                     {
                         case 0://Todo
-                            listado = db.GetList(A => true);
+                            listado = db.GetList(I => true);
                             break;
 
                         case 1://ID
                             int id = Convert.ToInt32(CriteriotextBox.Text);
-                            listado = db.GetList(E => E.EstudianteId == id);
+                            listado = db.GetList(I => I.InscripcionId == id);
                             break;
 
-                        case 2://Nombre
-                            listado = db.GetList(E => E.Nombre.Contains(CriteriotextBox.Text));
+                        case 2://EstudianteId
+                            int id2 = Convert.ToInt32(CriteriotextBox.Text);
+                            listado = db.GetList(I => I.EstudianteId == id2);
                             break;
 
                     }
 
-                    listado = listado.Where(E => E.FechaIngreso >= DesdedateTimePicker.Value.Date && E.FechaIngreso <= HastadateTimePicker.Value.Date).ToList();
+                    listado = listado.Where(E => E.Fecha >= DesdedateTimePicker.Value.Date && E.Fecha <= HastadateTimePicker.Value.Date).ToList();
 
                 }
                 catch (Exception)
@@ -67,13 +67,11 @@ namespace Proyecto_Parcial2.UI.Consultas
             {
                 listado = db.GetList(p => true);
             }
-           
+
             //listado = listado.Where(E => E.FechaIngreso >= DesdedateTimePicker.Value.Date  && E.FechaIngreso <= HastadateTimePicker.Value.Date ).ToList();
 
             ConsultadataGridView.DataSource = null;
             ConsultadataGridView.DataSource = listado;
         }
-
-       
     }
 }
