@@ -32,12 +32,12 @@
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.DesdedateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.HastadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
+            this.FiltrocomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,18 +77,6 @@
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 14;
             this.label2.Text = "Criterio:";
-            // 
-            // FiltrocomboBox
-            // 
-            this.FiltrocomboBox.FormattingEnabled = true;
-            this.FiltrocomboBox.Items.AddRange(new object[] {
-            "Todo",
-            "ID",
-            "Nombre"});
-            this.FiltrocomboBox.Location = new System.Drawing.Point(323, 8);
-            this.FiltrocomboBox.Name = "FiltrocomboBox";
-            this.FiltrocomboBox.Size = new System.Drawing.Size(188, 21);
-            this.FiltrocomboBox.TabIndex = 13;
             // 
             // label1
             // 
@@ -135,11 +123,24 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Hasta:";
             // 
+            // FiltrocomboBox
+            // 
+            this.FiltrocomboBox.FormattingEnabled = true;
+            this.FiltrocomboBox.Items.AddRange(new object[] {
+            "Todo",
+            "Id",
+            "Nombre"});
+            this.FiltrocomboBox.Location = new System.Drawing.Point(332, 8);
+            this.FiltrocomboBox.Name = "FiltrocomboBox";
+            this.FiltrocomboBox.Size = new System.Drawing.Size(178, 21);
+            this.FiltrocomboBox.TabIndex = 22;
+            // 
             // cEstudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 450);
+            this.Controls.Add(this.FiltrocomboBox);
             this.Controls.Add(this.HastadateTimePicker);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DesdedateTimePicker);
@@ -148,7 +149,6 @@
             this.Controls.Add(this.Buscarbutton);
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.FiltrocomboBox);
             this.Controls.Add(this.label1);
             this.Name = "cEstudiantes";
             this.Text = "cEstudiantes";
@@ -164,11 +164,11 @@
         private System.Windows.Forms.Button Buscarbutton;
         private System.Windows.Forms.TextBox CriteriotextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox FiltrocomboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker DesdedateTimePicker;
         private System.Windows.Forms.DateTimePicker HastadateTimePicker;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox FiltrocomboBox;
     }
 }

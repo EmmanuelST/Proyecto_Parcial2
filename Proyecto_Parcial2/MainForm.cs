@@ -46,5 +46,12 @@ namespace Proyecto_Parcial2
             consulta.MdiParent = this;
             consulta.Show();
         }
+
+        private void ConsultarEstudiantesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cEstudiantes consulta = new cEstudiantes();
+            consulta.MdiParent = this;
+            consulta.Show();
+        }
     }
 }

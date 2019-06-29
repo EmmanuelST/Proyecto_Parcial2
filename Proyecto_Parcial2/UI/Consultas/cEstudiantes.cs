@@ -17,11 +17,13 @@ namespace Proyecto_Parcial2.UI.Consultas
         public cEstudiantes()
         {
             InitializeComponent();
+            HastadateTimePicker.Value.AddDays(1);
+            Buscar();
         }
 
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
-
+            Buscar();
         }
 
         private void Buscar()
@@ -34,6 +36,7 @@ namespace Proyecto_Parcial2.UI.Consultas
 
                 try
                 {
+                 
                     switch (FiltrocomboBox.SelectedIndex)
                     {
                         case 0://Todo
@@ -50,6 +53,9 @@ namespace Proyecto_Parcial2.UI.Consultas
                             break;
 
                     }
+
+                    listado = listado.Where(E => E.FechaIngreso >= DesdedateTimePicker.Value.Date && E.FechaIngreso <= HastadateTimePicker.Value.Date).ToList();
+
                 }
                 catch (Exception)
                 {
@@ -61,8 +67,8 @@ namespace Proyecto_Parcial2.UI.Consultas
             {
                 listado = db.GetList(p => true);
             }
-
-            listado = listado.Where(E => E.FechaIngreso >= DesdedateTimePicker.Value && E.FechaIngreso <= HastadateTimePicker.Value ).ToList();
+           
+            //listado = listado.Where(E => E.FechaIngreso >= DesdedateTimePicker.Value.Date  && E.FechaIngreso <= HastadateTimePicker.Value.Date ).ToList();
 
             ConsultadataGridView.DataSource = null;
             ConsultadataGridView.DataSource = listado;
