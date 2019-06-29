@@ -70,22 +70,34 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\rAsignatura.cs">
+    <Compile Include="UI\Consultas\cAsiganturas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\rAsignatura.Designer.cs">
+    <Compile Include="UI\Consultas\cAsiganturas.Designer.cs">
+      <DependentUpon>cAsiganturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Consultas\cEstudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Consultas\cEstudiantes.Designer.cs">
+      <DependentUpon>cEstudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Registros\rAsignatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Registros\rAsignatura.Designer.cs">
       <DependentUpon>rAsignatura.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\rEstudiante.cs">
+    <Compile Include="UI\Registros\rEstudiante.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\rEstudiante.Designer.cs">
+    <Compile Include="UI\Registros\rEstudiante.Designer.cs">
       <DependentUpon>rEstudiante.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\rInscripciones.cs">
+    <Compile Include="UI\Registros\rInscripciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\rInscripciones.Designer.cs">
+    <Compile Include="UI\Registros\rInscripciones.Designer.cs">
       <DependentUpon>rInscripciones.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
@@ -101,13 +113,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UI\rAsignatura.resx">
+    <EmbeddedResource Include="UI\Consultas\cAsiganturas.resx">
+      <DependentUpon>cAsiganturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Consultas\cEstudiantes.resx">
+      <DependentUpon>cEstudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Registros\rAsignatura.resx">
       <DependentUpon>rAsignatura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\rEstudiante.resx">
+    <EmbeddedResource Include="UI\Registros\rEstudiante.resx">
       <DependentUpon>rEstudiante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\rInscripciones.resx">
+    <EmbeddedResource Include="UI\Registros\rInscripciones.resx">
       <DependentUpon>rInscripciones.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -125,25 +143,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\add.png" />
+    <None Include="UI\Registros\Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\buscar.png" />
+    <None Include="UI\Registros\Resources\buscar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\eliminar.png" />
+    <None Include="UI\Registros\Resources\eliminar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\guardar.png" />
+    <None Include="UI\Registros\Resources\guardar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\nuevo.png" />
+    <None Include="UI\Registros\Resources\nuevo.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\remover.png" />
+    <None Include="UI\Registros\Resources\remover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\buscaTyni.png" />
+    <None Include="UI\Registros\Resources\buscaTyni.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

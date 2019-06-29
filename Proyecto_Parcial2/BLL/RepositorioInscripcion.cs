@@ -101,16 +101,27 @@ namespace Proyecto_Parcial2.BLL
             bool paso = false;
             Contexto db = new Contexto();
             RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
+            RepositorioBase<InscripcionDetalles> dbD = new RepositorioBase<InscripcionDetalles>();
+
 
             try
             {
+               
                 var eliminar = db.Inscripcion.Find(id);
+
                 var estudiante = dbE.Buscar(eliminar.EstudianteId);
                 eliminar.CalcularMonto();
 
                 estudiante.Balance -= eliminar.Monto;
                 //dbE.Modificar(estudiante);
 
+                /*foreach (var item in eliminar.Asiganturas)
+                {
+                    dbD.Elimimar(item.InscripcionDetallesId);
+                }*/
+
+
+                
                 db.Entry(eliminar).State = EntityState.Deleted;
                 paso = db.SaveChanges() > 0;
 
@@ -122,6 +133,8 @@ namespace Proyecto_Parcial2.BLL
 
             return paso;
         }
+
+      
 
     }
 }

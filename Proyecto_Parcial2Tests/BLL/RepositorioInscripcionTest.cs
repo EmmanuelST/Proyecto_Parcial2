@@ -25,15 +25,17 @@ namespace Proyecto_Parcial2Tests.BLL
                 AsignaturaId = 1,
                 InscripcionDetallesId = 0,
                 InscripcionId = 0,
-                SubTotal = 100
-            });
+                SubTotal = 100,
+                //Asignatura = new Asignaturas() {AsignaturaId = 1 }
+            }) ;
 
             lista.Add(new InscripcionDetalles()
             {
                 AsignaturaId = 1,
                 InscripcionDetallesId = 0,
                 InscripcionId = 0,
-                SubTotal = 100
+                SubTotal = 100,
+                //Asignatura = new Asignaturas() { AsignaturaId = 1 }
             });
 
             Inscripcion inscripcion = new Inscripcion()
@@ -63,8 +65,9 @@ namespace Proyecto_Parcial2Tests.BLL
 
             lista.Add(new InscripcionDetalles()
             {
-                AsignaturaId = 2,
-                InscripcionDetallesId = 2,
+                AsignaturaId = 1,
+                //Asignatura = new Asignaturas() { AsignaturaId = 1 },
+                InscripcionDetallesId = 1,
                 InscripcionId = 1,
                 SubTotal = 100
             });

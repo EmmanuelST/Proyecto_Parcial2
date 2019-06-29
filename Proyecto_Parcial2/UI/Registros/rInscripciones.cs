@@ -239,7 +239,11 @@ namespace Proyecto_Parcial2.UI
         {
             RepositorioInscripcion db = new RepositorioInscripcion();
 
-            try
+            int id = (int)IdInscripcionnumericUpDown.Value;
+
+            db.Elimimar(id);
+
+            /*try
             {
 
                 if(IdInscripcionnumericUpDown.Value > 0)
@@ -255,7 +259,7 @@ namespace Proyecto_Parcial2.UI
             {
                 throw;
                 //MessageBox.Show("No se puede eliminar si no existe","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }
+            }*/
         }
 
         private void BuscarEstudiantebutton_Click(object sender, EventArgs e)
@@ -323,6 +327,26 @@ namespace Proyecto_Parcial2.UI
 
         }
 
+        private bool ValidarAddAsignatura()
+        {
+            bool paso = true;
+
+            if (PrecioCreditosnumericUpDown.Value <= 0)
+            {
+                errorProvider.SetError(PrecioCreditosnumericUpDown, "Debe fijar el precio de los creditos");
+                paso = false;
+            }
+
+            if(string.IsNullOrWhiteSpace(DescripcionAsignaturatextBox.Text))
+            {
+                errorProvider.SetError(DescripcionAsignaturatextBox, "Este campo no puede estar vacio, busque una asignatura");
+                paso = false;
+            }
+
+
+            return paso;
+        }
+
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
             errorProvider.Clear();
@@ -331,11 +355,11 @@ namespace Proyecto_Parcial2.UI
             {
                 if (IdAsignaturanumericUpDown.Value > 0)
                 {
-                    if (PrecioCreditosnumericUpDown.Value <= 0)
-                    {
-                        errorProvider.SetError(PrecioCreditosnumericUpDown, "Debe fijar el precio de los creditos");
+
+
+                    if (!ValidarAddAsignatura())
                         return;
-                    }
+
 
                     Asignaturas asignatura;
                     if ( (asignatura = BuscarAsigantura((int)IdAsignaturanumericUpDown.Value)) != null)
@@ -344,6 +368,7 @@ namespace Proyecto_Parcial2.UI
                         {
                             InscripcionId = (int)IdInscripcionnumericUpDown.Value,
                             AsignaturaId = asignatura.AsignaturaId,
+                            //Asignatura = asignatura,
                             InscripcionDetallesId = 0,
                             SubTotal = (asignatura.Creditos * PrecioCreditosnumericUpDown.Value)
                         });

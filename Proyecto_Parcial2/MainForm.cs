@@ -1,4 +1,5 @@
 ﻿using Proyecto_Parcial2.UI;
+using Proyecto_Parcial2.UI.Consultas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,13 @@ namespace Proyecto_Parcial2
             rInscripciones registro = new rInscripciones();
             registro.MdiParent = this;
             registro.Show();
+        }
+
+        private void ConsultarAsignaturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cAsiganturas consulta = new cAsiganturas();
+            consulta.MdiParent = this;
+            consulta.Show();
         }
     }
 }

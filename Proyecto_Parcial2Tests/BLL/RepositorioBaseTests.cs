@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Proyecto_Parcial2.Entidades;
+
 
 namespace Proyecto_Parcial2.BLL.Tests
 {
