@@ -70,6 +70,7 @@ namespace Proyecto_Parcial2.UI
             IdEstudiantenumericUpDown.Value = 0;
             EstudianteNombretextBox.Text = string.Empty;
             FechadateTimePicker.Value = DateTime.Now;
+            PrecioCreditosnumericUpDown.Value = 0;
             IdAsignaturanumericUpDown.Value = 0;
             DescripcionAsignaturatextBox.Text = string.Empty;
             Detalles = new List<InscripcionDetalles>();
@@ -238,17 +239,21 @@ namespace Proyecto_Parcial2.UI
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
             RepositorioInscripcion db = new RepositorioInscripcion();
+            
 
-            int id = (int)IdInscripcionnumericUpDown.Value;
-
-            db.Elimimar(id);
-
-            /*try
+          
+            try
             {
 
                 if(IdInscripcionnumericUpDown.Value > 0)
                 {
-                    db.Elimimar((int)IdInscripcionnumericUpDown.Value);
+                    if(db.Elimimar((int)IdInscripcionnumericUpDown.Value))
+                    {
+                        db.RestarBalance((int)IdEstudiantenumericUpDown.Value, ObtenerTotal());
+                        Limpiar();
+                        MessageBox.Show("Eliminado correctamente","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+
+                    }
                 }
                 else
                 {
@@ -259,7 +264,7 @@ namespace Proyecto_Parcial2.UI
             {
                 throw;
                 //MessageBox.Show("No se puede eliminar si no existe","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }*/
+            }
         }
 
         private void BuscarEstudiantebutton_Click(object sender, EventArgs e)
@@ -347,6 +352,20 @@ namespace Proyecto_Parcial2.UI
             return paso;
         }
 
+        private decimal ObtenerTotal()
+        {
+            decimal total = 0;
+
+            foreach(var item in Detalles)
+            {
+                total += item.SubTotal;
+            }
+
+
+            return total;
+
+        }
+
         private void Agregarbutton_Click(object sender, EventArgs e)
         {
             errorProvider.Clear();
@@ -360,10 +379,16 @@ namespace Proyecto_Parcial2.UI
                     if (!ValidarAddAsignatura())
                         return;
 
+                    if(Detalles.Any(A => A.AsignaturaId == IdAsignaturanumericUpDown.Value))
+                    {
+                        MessageBox.Show("Esta asignatura ya esta inscrita","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                        return;
+                    }
 
                     Asignaturas asignatura;
                     if ( (asignatura = BuscarAsigantura((int)IdAsignaturanumericUpDown.Value)) != null)
                     {
+                        
                         Detalles.Add(new InscripcionDetalles()
                         {
                             InscripcionId = (int)IdInscripcionnumericUpDown.Value,
@@ -373,6 +398,8 @@ namespace Proyecto_Parcial2.UI
                             SubTotal = (asignatura.Creditos * PrecioCreditosnumericUpDown.Value)
                         });
                         CargarGrip();
+                        TotaltextBox.Text = ObtenerTotal().ToString();
+                        DescripcionAsignaturatextBox.Text = string.Empty;
                     }
                     else
                     {
@@ -399,6 +426,7 @@ namespace Proyecto_Parcial2.UI
             {
                 Detalles.RemoveAt(AsignaturasdataGridView.CurrentRow.Index);
                 CargarGrip();
+                TotaltextBox.Text = ObtenerTotal().ToString();
             }
             catch(Exception)
             {

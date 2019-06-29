@@ -234,9 +234,12 @@
             // 
             // AsignaturasdataGridView
             // 
+            this.AsignaturasdataGridView.AllowUserToAddRows = false;
+            this.AsignaturasdataGridView.AllowUserToDeleteRows = false;
             this.AsignaturasdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AsignaturasdataGridView.Location = new System.Drawing.Point(6, 53);
             this.AsignaturasdataGridView.Name = "AsignaturasdataGridView";
+            this.AsignaturasdataGridView.ReadOnly = true;
             this.AsignaturasdataGridView.Size = new System.Drawing.Size(358, 174);
             this.AsignaturasdataGridView.TabIndex = 5;
             // 
