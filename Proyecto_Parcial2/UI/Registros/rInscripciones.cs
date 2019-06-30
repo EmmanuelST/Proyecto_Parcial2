@@ -56,8 +56,7 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Ocurrio un error!!","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error!!","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
             
@@ -230,8 +229,7 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hubo un error", "Error!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -262,8 +260,7 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("No se puede eliminar si no existe","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se puede eliminar si no existe","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
         }
 
@@ -294,8 +291,7 @@ namespace Proyecto_Parcial2.UI
 
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Ocurrio un error","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error","Erro!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -326,8 +322,7 @@ namespace Proyecto_Parcial2.UI
                 }
             }catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
         }
@@ -414,8 +409,7 @@ namespace Proyecto_Parcial2.UI
             }
             catch(Exception)
             {
-                throw;
-                //MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Ocurrio un error","Error!!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
         }
@@ -430,7 +424,7 @@ namespace Proyecto_Parcial2.UI
             }
             catch(Exception)
             {
-                
+                MessageBox.Show("Debe de seleccionar una fila de la tabla para eliminar","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
             }
            
         }

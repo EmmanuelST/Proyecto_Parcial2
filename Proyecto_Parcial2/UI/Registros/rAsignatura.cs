@@ -42,6 +42,7 @@ namespace Proyecto_Parcial2.UI
 
             RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
             Asignaturas asigantura = new Asignaturas();
+            DescripciontextBox.Text = DescripciontextBox.Text.Trim();
             asigantura = LlenarClase();
 
             try
@@ -58,8 +59,8 @@ namespace Proyecto_Parcial2.UI
 
                     if (db.Guardar(asigantura))
                     {
-                        Limpiar();
                         MessageBox.Show("Guardado correctamente", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Limpiar();
                     }
                     else
                     {
@@ -70,8 +71,8 @@ namespace Proyecto_Parcial2.UI
                 {
                     if(db.Modificar(asigantura))
                     {
-                        Limpiar();
                         MessageBox.Show("Modificado correctamente", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Limpiar();
                     }
                     else
                     {
