@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cEstudiantes));
             this.ConsultadataGridView = new System.Windows.Forms.DataGridView();
             this.Buscarbutton = new System.Windows.Forms.Button();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
@@ -153,8 +154,9 @@
             this.Controls.Add(this.CriteriotextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cEstudiantes";
-            this.Text = "cEstudiantes";
+            this.Text = "Consulta de Estudiantes";
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

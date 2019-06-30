@@ -212,6 +212,7 @@
             this.Controls.Add(this.IdnumericUpDown);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "rEstudiante";
             this.Text = "Registro de Estudiante";
             ((System.ComponentModel.ISupportInitialize)(this.IdnumericUpDown)).EndInit();

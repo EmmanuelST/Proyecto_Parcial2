@@ -101,6 +101,7 @@ namespace Proyecto_Parcial2.UI
         private void Eliminarbutton_Click(object sender, EventArgs e)
         {
             RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            errorProvider.Clear();
 
             try
             {
@@ -118,6 +119,10 @@ namespace Proyecto_Parcial2.UI
                     }
                         
                 }
+                else
+                {
+                    errorProvider.SetError(IdnumericUpDown,"Este campo no puede ser cero");
+                }
                
                 
             }catch(Exception)
@@ -129,6 +134,7 @@ namespace Proyecto_Parcial2.UI
         private void Buscarbutton_Click(object sender, EventArgs e)
         {
             RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
+            errorProvider.Clear();
             try
             {
                
@@ -145,6 +151,11 @@ namespace Proyecto_Parcial2.UI
                         MessageBox.Show("No se pudo encontrar", "Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     }
                 }
+                else
+                {
+                    errorProvider.SetError(IdnumericUpDown, "Este valor no puede ser cero");
+                }
+                
             }
             catch (Exception)
             {

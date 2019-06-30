@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cAsiganturas));
             this.ConsultadataGridView = new System.Windows.Forms.DataGridView();
             this.CriteriotextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -114,8 +115,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.FiltrocomboBox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cAsiganturas";
-            this.Text = "cAsiganturas";
+            this.Text = "Consulta de Asignaturas";
             ((System.ComponentModel.ISupportInitialize)(this.ConsultadataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
