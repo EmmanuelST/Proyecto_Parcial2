@@ -85,7 +85,7 @@ namespace Proyecto_Parcial2.UI
             inscripcion.InscripcionId = (int)IdInscripcionnumericUpDown.Value;
             inscripcion.EstudianteId = (int)IdEstudiantenumericUpDown.Value;
             inscripcion.Fecha = FechadateTimePicker.Value;
-            inscripcion.Asiganturas = Detalles;
+            inscripcion.Asignaturas = Detalles;
             inscripcion.CalcularMonto();
 
             return inscripcion;
@@ -128,7 +128,7 @@ namespace Proyecto_Parcial2.UI
             inscripcion.CalcularMonto();
             TotaltextBox.Text = inscripcion.Monto.ToString();
             Detalles = new List<InscripcionDetalles>();
-            Detalles = inscripcion.Asiganturas;
+            Detalles = inscripcion.Asignaturas;
             CargarGrip();
 
         }
@@ -428,5 +428,7 @@ namespace Proyecto_Parcial2.UI
             }
            
         }
+
+       
     }
 }

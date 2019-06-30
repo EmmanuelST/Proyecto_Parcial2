@@ -43,7 +43,7 @@ namespace Proyecto_Parcial2Tests.BLL
                 InscripcionId = 0,
                 EstudianteId = 1,
                 Fecha = DateTime.Now,
-                Asiganturas = lista
+                Asignaturas = lista
             };
             inscripcion.CalcularMonto();
 
@@ -77,7 +77,7 @@ namespace Proyecto_Parcial2Tests.BLL
                 InscripcionId = 1,
                 EstudianteId = 1,
                 Fecha = DateTime.Now,
-                Asiganturas = lista
+                Asignaturas = lista
             };
             inscripcion.CalcularMonto();
 

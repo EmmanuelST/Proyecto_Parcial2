@@ -55,9 +55,9 @@ namespace Proyecto_Parcial2.BLL
 
                 estudiante.Balance -= anterior.Monto;
 
-                foreach (var item in anterior.Asiganturas)
+                foreach (var item in anterior.Asignaturas)
                 {
-                    if (!entity.Asiganturas.Any(A => A.InscripcionDetallesId == item.InscripcionDetallesId))
+                    if (!entity.Asignaturas.Any(A => A.InscripcionDetallesId == item.InscripcionDetallesId))
                     {
                         db.Entry(item).State = EntityState.Deleted;
                       
@@ -65,7 +65,7 @@ namespace Proyecto_Parcial2.BLL
                         
                 }
 
-                foreach(var item in entity.Asiganturas)
+                foreach(var item in entity.Asignaturas)
                 {
                     if (item.InscripcionDetallesId == 0)
                     {
