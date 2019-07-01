@@ -23,6 +23,7 @@ namespace Proyecto_Parcial2.BLL
         public virtual bool Guardar(T entity)
         {
             bool paso = false;
+           
 
             try
             {
@@ -34,12 +35,14 @@ namespace Proyecto_Parcial2.BLL
                 throw;
             }
             
+            
             return paso;
         }
 
         public virtual bool Modificar(T entity)
         {
             bool paso = false;
+            
 
             try
             {
@@ -51,12 +54,14 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            
 
             return paso;
         }
         public virtual T Buscar(int id)
         {
             T entity;
+            
 
             try
             {
@@ -66,12 +71,14 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            
 
             return entity;
         }
         public virtual List<T> GetList(Expression<Func<T, bool>> expression)
         {
             List<T> lista = new List<T>();
+            
 
             try
             {
@@ -81,6 +88,7 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            
 
             return lista;
 
@@ -88,6 +96,7 @@ namespace Proyecto_Parcial2.BLL
         public virtual bool Elimimar(int id)
         {
             bool paso = false;
+            
 
             try
             {
@@ -99,6 +108,7 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            
 
             return paso;
         }
@@ -110,6 +120,7 @@ namespace Proyecto_Parcial2.BLL
         public virtual bool Repetido(Expression<Func<T, bool>> expression)
         {
             bool paso;
+           
             try
             {
                 paso = db.Set<T>().Any(expression);
@@ -118,6 +129,8 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            
+            
 
             return paso;
         }

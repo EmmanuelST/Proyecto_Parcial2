@@ -15,12 +15,13 @@ namespace Proyecto_Parcial2.BLL
         {
             bool paso = false;
             Contexto db = new Contexto();
+            RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
 
             try
             {
-                RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
+                
 
-                if(db.Inscripcion.Add(entity) != null)
+                if (db.Inscripcion.Add(entity) != null)
                 {
                     var estudiante = dbE.Buscar(entity.EstudianteId);
                     entity.CalcularMonto();
@@ -35,6 +36,11 @@ namespace Proyecto_Parcial2.BLL
             {
                 throw;
             }
+            finally
+            {
+                db.Dispose();
+                dbE.Dispose();
+            }
 
 
             return paso;
@@ -45,12 +51,12 @@ namespace Proyecto_Parcial2.BLL
             bool paso = false;
             Contexto db = new Contexto();
             RepositorioBase<Estudiantes> dbE = new RepositorioBase<Estudiantes>();
-           
+
 
             try
             {
                 var estudiante = dbE.Buscar(entity.EstudianteId);
-                
+
                 var anterior = new RepositorioBase<Inscripcion>().Buscar(entity.InscripcionId);
 
                 estudiante.Balance -= anterior.Monto;
@@ -60,18 +66,18 @@ namespace Proyecto_Parcial2.BLL
                     if (!entity.Asignaturas.Any(A => A.InscripcionDetallesId == item.InscripcionDetallesId))
                     {
                         db.Entry(item).State = EntityState.Deleted;
-                      
+
                     }
-                        
+
                 }
 
-                foreach(var item in entity.Asignaturas)
+                foreach (var item in entity.Asignaturas)
                 {
                     if (item.InscripcionDetallesId == 0)
                     {
                         db.Entry(item).State = EntityState.Added;
                     }
-                        
+
                     else
                         db.Entry(item).State = EntityState.Modified;
                 }
@@ -86,9 +92,15 @@ namespace Proyecto_Parcial2.BLL
                 paso = db.SaveChanges() > 0;
 
 
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                db.Dispose();
+                dbE.Dispose();
             }
 
 
@@ -100,30 +112,35 @@ namespace Proyecto_Parcial2.BLL
 
             bool paso = false;
             Contexto db = new Contexto();
-           
+
             try
             {
-               
+
                 var eliminar = db.Inscripcion.Find(id);
-               
+
                 db.Entry(eliminar).State = EntityState.Deleted;
 
                 paso = db.SaveChanges() > 0;
 
 
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                db.Dispose();
             }
 
             return paso;
         }
 
-        public bool RestarBalance(int id,decimal monto)
+        public bool RestarBalance(int id, decimal monto)
         {
             bool paso = false;
             RepositorioBase<Estudiantes> db = new RepositorioBase<Estudiantes>();
-            
+
 
             try
             {
@@ -132,16 +149,47 @@ namespace Proyecto_Parcial2.BLL
                 db.Modificar(estudiante);
 
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                db.Dispose();
             }
 
             return paso;
         }
 
-       
+        public bool Existe(int id)
+        {
+            bool paso = false;
+            Contexto db = new Contexto();
 
-      
+            try
+            {
+                if(db.Inscripcion.Find(id) != null)
+                {
+                    paso = true;
+                }
+
+            }catch(Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+
+
+            return paso;
+        }
+
+
+
+
+
     }
 }

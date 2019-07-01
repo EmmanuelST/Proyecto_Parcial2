@@ -107,6 +107,11 @@ namespace Proyecto_Parcial2.UI
             {
                 if (IdnumericUpDown.Value > 0)
                 {
+                    if(db.Buscar((int)IdnumericUpDown.Value).Balance > 0)
+                    {
+                        MessageBox.Show("No se puede eliminar este estudiante por que tiene balance pendiente","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        return;
+                    }
                     if (db.Elimimar((int)IdnumericUpDown.Value))
                     {
                         MessageBox.Show("Eliminado Correctamente", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Information);

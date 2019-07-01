@@ -41,6 +41,7 @@ namespace Proyecto_Parcial2.UI
                 return;
 
             RepositorioBase<Asignaturas> db = new RepositorioBase<Asignaturas>();
+            RepositorioBase<Asignaturas> temp = new RepositorioBase<Asignaturas>();
             Asignaturas asigantura = new Asignaturas();
             DescripciontextBox.Text = DescripciontextBox.Text.Trim();
             asigantura = LlenarClase();
@@ -69,7 +70,18 @@ namespace Proyecto_Parcial2.UI
                 }
                 else
                 {
-                    if(db.Modificar(asigantura))
+                    var asigantura2 = temp.Buscar((int)IdnumericUpDown.Value);
+
+                    if(DescripciontextBox.Text != asigantura2.Descripcion)
+                    {
+                        if (db.Repetido(A => A.Descripcion == DescripciontextBox.Text))
+                        {
+                            MessageBox.Show("Esta asignatura ya esta registrada", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    if (db.Modificar(asigantura))
                     {
                         MessageBox.Show("Modificado correctamente", "Atencion!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Limpiar();
