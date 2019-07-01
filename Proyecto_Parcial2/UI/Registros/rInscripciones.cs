@@ -218,6 +218,13 @@ namespace Proyecto_Parcial2.UI
                 }
                 else
                 {
+                    if(!db.Existe((int)IdAsignaturanumericUpDown.Value))
+                    {
+                        MessageBox.Show("Esta inscripcion no exites, No se puede modificar","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    
                     if(db.Modificar(inscripcion))
                     {
                         Limpiar();

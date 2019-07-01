@@ -16,7 +16,7 @@ namespace Proyecto_Parcial2Tests.BLL
         public void Guardar()
         {
             RepositorioInscripcion db = new RepositorioInscripcion();
-            RepositorioBase<Estudiantes> estudiante = new RepositorioBase<Estudiantes>();
+            //RepositorioBase<Estudiantes> estudiante = new RepositorioBase<Estudiantes>();
 
             List<InscripcionDetalles> lista = new List<InscripcionDetalles>();
 
@@ -29,14 +29,14 @@ namespace Proyecto_Parcial2Tests.BLL
                 //Asignatura = new Asignaturas() {AsignaturaId = 1 }
             }) ;
 
-            lista.Add(new InscripcionDetalles()
+            /*lista.Add(new InscripcionDetalles()
             {
                 AsignaturaId = 1,
                 InscripcionDetallesId = 0,
                 InscripcionId = 0,
                 SubTotal = 100,
                 //Asignatura = new Asignaturas() { AsignaturaId = 1 }
-            });
+            });*/
 
             Inscripcion inscripcion = new Inscripcion()
             {
@@ -47,8 +47,8 @@ namespace Proyecto_Parcial2Tests.BLL
             };
             inscripcion.CalcularMonto();
 
-            var temp = estudiante.Buscar(inscripcion.EstudianteId);
-            temp.Balance += inscripcion.Monto;
+           // var temp = estudiante.Buscar(inscripcion.EstudianteId);
+           // temp.Balance += inscripcion.Monto;
             //estudiante.Modificar(temp) ;
 
             Assert.IsTrue(db.Guardar(inscripcion));

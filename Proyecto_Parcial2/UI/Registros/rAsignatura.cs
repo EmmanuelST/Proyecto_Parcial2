@@ -121,7 +121,7 @@ namespace Proyecto_Parcial2.UI
 
             }
 
-            if(CreditosnumericUpDown.Value > 5)
+            if(CreditosnumericUpDown.Value > 10)
             {
                 errorProvider.SetError(CreditosnumericUpDown,"Una Asignatura no puede tener mas de 5 creditos");
                 paso = false;
