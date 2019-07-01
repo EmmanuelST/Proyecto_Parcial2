@@ -218,13 +218,7 @@ namespace Proyecto_Parcial2.UI
                 }
                 else
                 {
-                    if(!db.Existe((int)IdAsignaturanumericUpDown.Value))
-                    {
-                        MessageBox.Show("Esta inscripcion no exites, No se puede modificar","Atencion!!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                        return;
-                    }
-
-                    
+                                                            
                     if(db.Modificar(inscripcion))
                     {
                         Limpiar();
@@ -394,6 +388,21 @@ namespace Proyecto_Parcial2.UI
                     Asignaturas asignatura;
                     if ( (asignatura = BuscarAsigantura((int)IdAsignaturanumericUpDown.Value)) != null)
                     {
+                        Estudiantes estudiante;
+                        if((estudiante = BuscarEstudiante((int)IdEstudiantenumericUpDown.Value)) == null)
+                        {
+                            MessageBox.Show("Este Estudiante no es el mismo seleccionado arriba y no existe");
+                            return;
+                        }
+                        else
+                        {
+                            if(!estudiante.Nombre.Equals(EstudianteNombretextBox.Text))
+                            {
+                                MessageBox.Show("el estudiante seleccionado no es el mismo de arriba");
+                                return;
+
+                            }
+                        }
                         
                         Detalles.Add(new InscripcionDetalles()
                         {
