@@ -77,6 +77,7 @@ namespace Proyecto_Parcial2.UI
                 errorProvider.SetError(NombretextBox, "Este campo no puede estar vacio");
                 paso = false;
             }
+            
 
             if(FechadateTimePicker.Value > DateTime.Now)
             {
