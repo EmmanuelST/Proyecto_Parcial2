@@ -153,6 +153,7 @@
             // 
             this.EstudianteNombretextBox.Location = new System.Drawing.Point(145, 121);
             this.EstudianteNombretextBox.Name = "EstudianteNombretextBox";
+            this.EstudianteNombretextBox.ReadOnly = true;
             this.EstudianteNombretextBox.Size = new System.Drawing.Size(219, 20);
             this.EstudianteNombretextBox.TabIndex = 14;
             // 

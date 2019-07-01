@@ -39,6 +39,8 @@ namespace Proyecto_Parcial2.UI
                     {
                         Limpiar();
                         LlenarCampos(inscripcion);
+                        IdEstudiantenumericUpDown.Enabled = false;
+                        BuscarEstudiantebutton.Enabled = false;
                         LlenarCamposEstudiante(BuscarEstudiante(inscripcion.EstudianteId));
 
                     }
@@ -75,6 +77,8 @@ namespace Proyecto_Parcial2.UI
             Detalles = new List<InscripcionDetalles>();
             CargarGrip();
             TotaltextBox.Text = "0";
+            IdEstudiantenumericUpDown.Enabled = true;
+            BuscarEstudiantebutton.Enabled = true;
 
         }
 
